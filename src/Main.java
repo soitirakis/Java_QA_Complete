@@ -4,13 +4,13 @@
 void main() {
 
     //TODO 1.
-    String termen1 = "Ana";
+    /*String termen1 = "Ana";
     String termen2 = "are";
     String termen3 = "mere";
     String space = " ";
 
     String finalText = termen1 + space + termen2 + space + termen3;
-    System.out.println("Text: " + finalText);
+    System.out.println("Text: " + finalText);*/
 
     //TODO 3
     //constant WEEK_DAYS
