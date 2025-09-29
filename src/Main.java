@@ -1,5 +1,5 @@
 
-//Tema 1 - QA Complete - Andrei Anghel
+//Tema 1 - QA Complete - Andrei Anghel.
 
 void main() {
 
