@@ -1,7 +1,7 @@
 
 //Tema 1 - QA Complete - Andrei Anghel
 
-public static void main(String[] args) {
+void main() {
 
     //TODO 1.
     String termen1 = "Ana";
