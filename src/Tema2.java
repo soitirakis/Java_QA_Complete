@@ -1,10 +1,6 @@
 public class Tema2 {
     public static void main(String args[]){
         //TODO 01
-        /*Expected output
-        * * *
-        * * *
-        * * * */
 
         System.out.println("Draw Full Shape");
         drawFullShape(5,5);
