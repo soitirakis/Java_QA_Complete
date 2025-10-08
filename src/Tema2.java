@@ -10,6 +10,8 @@ public class Tema2 {
 
         System.out.println("Draw Corners Shape");
         drawShapeCorners(5,5);
+
+        numberOfDays(1900, 2016);
     }
     public static void drawFullShape(int width, int height){
         for (int x=0;x<width;x++){
@@ -60,6 +62,27 @@ public class Tema2 {
             }
             System.out.print("\n");
         }
+    }
+
+
+    //TODO 04
+    public static void numberOfDays(int startYear, int endYear){
+        int NORMAL_DAYS_FEBRUARY = 28;
+        int LEAP_YEAR_DAYS_FEBRUARY = 29;
+        int sumDaysInFebruary = 0;
+        boolean isLeapYear = false;
+        for (int year = startYear; year <= endYear; year++){
+            if (((year % 4 == 0) & (year % 100 != 0)) || (year % 400 == 0) ){
+                isLeapYear = true;
+            }
+
+            if (isLeapYear) {
+                sumDaysInFebruary += LEAP_YEAR_DAYS_FEBRUARY;
+            } else {
+                sumDaysInFebruary += NORMAL_DAYS_FEBRUARY;
+            }
+        }
+        System.out.println("From " + startYear + "-" + endYear + ":" + sumDaysInFebruary + " days in February.");
     }
 
 }
