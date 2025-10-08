@@ -84,5 +84,4 @@ public class Tema2 {
         }
         System.out.println("From " + startYear + "-" + endYear + ":" + sumDaysInFebruary + " days in February.");
     }
-
 }
