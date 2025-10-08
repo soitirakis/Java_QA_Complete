@@ -1,7 +1,12 @@
 public class Tema2 {
     public static void main(String args[]){
         //TODO 01
-
+        //Expected output
+        /*
+        * * * * *
+        * * * * *
+        * * * * *
+        * * * * *       */
         System.out.println("Draw Full Shape");
         drawFullShape(5,5);
 
@@ -23,6 +28,12 @@ public class Tema2 {
     }
 
         //TODO 02
+        //Expected output
+        /*
+        * * * * * *
+        *         *
+        *         *
+        * * * * * *           */
     public static void drawShapeOutline(int width, int height){
         for (int x=0;x<height;x++){
             for(int y=0;y<width;y++){
@@ -41,6 +52,11 @@ public class Tema2 {
     }
 
         //TODO 03
+    //Expected output
+    /*
+    *    *
+
+    *    *                                         */
     public static void drawShapeCorners(int width, int height){
         for (int x=0;x<height;x++){
             for(int y=0;y<width;y++){
@@ -66,6 +82,7 @@ public class Tema2 {
 
 
     //TODO 04
+    //number of days for February for an interval of years.
     public static void numberOfDays(int startYear, int endYear){
         int NORMAL_DAYS_FEBRUARY = 28;
         int LEAP_YEAR_DAYS_FEBRUARY = 29;
@@ -85,3 +102,6 @@ public class Tema2 {
         System.out.println("From " + startYear + "-" + endYear + ":" + sumDaysInFebruary + " days in February.");
     }
 }
+
+
+
