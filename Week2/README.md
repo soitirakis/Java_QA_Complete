@@ -1,23 +1,27 @@
-QA Complete - JAVA Introduction
-For file Tema2 
+# QA Complete - JAVA Methods
 
-1. Write a method that prints a rectangle made of "*".
-   Expected output:
-  // ******* "\n"
-  //*******
-  // *******
-  // *******
+## Exercises for week2 
+
+1. Write a method that prints a rectangle made of "*". Expected output:  
+```
+    *******
+    *******
+    *******
+    *******
+```
 2. Create another method drawShapeOutline().
    Expected output:
+```
    *******
    *     *
    *     *
    *******
-
+```
 3. Create a method drawShapeCornes().
    Expected output:
+```
    *     *
 
    *     * 
-
+```
 4. Display the number of days in month February from a year between 1900-2016. 
