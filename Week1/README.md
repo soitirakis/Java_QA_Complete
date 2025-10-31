@@ -1,4 +1,8 @@
-QA Complete - JAVA Introduction 
+#QA Complete - JAVA Introduction 
+
+Week1 is an introduction to Java language. In this week you practice the basics. Syntax, Classes, Constructos, Access control 
+
+##Exercices 
 
 1. Create a new project where to include variables of type string with the following names
    --termen1
