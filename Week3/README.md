@@ -1,5 +1,7 @@
-Homework OOP - Java
-1. Creata 2 classes defined as:
+# Homework Java - OOP. 
+
+## Exercices 
+1. Create 2 classes defined as:
    - Author
      - name:String
      - email:String
