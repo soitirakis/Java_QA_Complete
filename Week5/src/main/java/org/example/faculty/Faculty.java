@@ -26,26 +26,37 @@ public class Faculty {
         System.out.println("Student added");
     }
 
-    public void printStudentBySpecialization(){
-
+    public void printStudentBySpecialization(Specialization specialization){
+        for (Specialization spec : studentsMap.keySet()) {
+            if (spec == specialization){
+                System.out.println("Students in: " + specialization);
+                for (Student student : studentsMap.get(spec)){
+                    System.out.println(student);
+                }
+            }
+        }
     }
 
     public void printStudentsById(String ID){
+        boolean inSchool = false;
         for (List<Student> students : studentsMap.values()){
-            for (Student student : students){
-                if (student.ID == ID) {
+            for (Student student : students) {
+                if (student.ID.equals(ID)) {
+                    inSchool = true;
                     System.out.println(student);
-                } else {
-                    System.out.println(ID + " not present.");
                 }
             }
+
+        }
+        if (inSchool == false) {
+            System.out.println(ID + " not present.");
         }
     }
 
     public void removeStudentById(String ID) {
         for (List<Student> students : studentsMap.values()){
             for (Student student : students){
-                if (student.ID == ID){
+                if (student.ID.equals(ID)){
                     students.remove(student);
                     System.out.println(ID + " Student removed");
                     break;
