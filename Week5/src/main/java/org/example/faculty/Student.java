@@ -2,19 +2,24 @@ package org.example.faculty;
 
 public class Student {
     String name;
-    String numarMatricol;
-    Speciality.Specialization specialization;
+    String ID;
+    Faculty.Specialization specialization;
 
     public Student () {
     }
 
-    public Student (String name, String numarMatricol, String value) {
+    public Student (String name, String ID, String value) {
         this.name = name;
-        this.numarMatricol = numarMatricol;
-        for (Speciality.Specialization specialization : Speciality.Specialization.values()) {
+        this.ID = ID;
+        for (Faculty.Specialization specialization : Faculty.Specialization.values()) {
             if (specialization.name().equals(value)) {
-                this.specialization = specialization;
+                this.specialization = Faculty.Specialization.valueOf(specialization.name());
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return name + ":" + ID + ":" + specialization.name();
     }
 }

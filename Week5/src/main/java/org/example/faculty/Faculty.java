@@ -1,41 +1,68 @@
 package org.example.faculty;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.HashMap;
+import java.util.*;
 
 public class Faculty {
-    HashMap<Speciality.Specialization, List> studentsBySpecialization = new HashMap<Speciality.Specialization, List>();
-    List students = new ArrayList();
+    enum Specialization {
+        INFORMATICS,
+        MATHEMATICS,
+        BIOLOGY,
+        CHEMISTRY
+    }
+    private Map<Specialization, List<Student>> studentsMap;
 
     public Faculty () {
+        studentsMap = new HashMap<>();
 
+        for (Specialization specialization : Specialization.values()) {
+            studentsMap.put(specialization, new ArrayList<>());
+        }
     }
 
     public void addStudent(Student student){
 
-        studentsBySpecialization.put(student.specialization, Collections.singletonList(students.add(student.name)));
+        Specialization specialization = student.specialization;
+        studentsMap.get(specialization).add(student);
         System.out.println("Student added");
     }
 
-    public void printStudentBySpecialization(Speciality.Specialization specialization){
-        List students =  studentsBySpecialization.get(specialization);
-        for  (Object student : students){
-            System.out.println((String)student);
+    public void printStudentBySpecialization(){
+
+    }
+
+    public void printStudentsById(String ID){
+        for (List<Student> students : studentsMap.values()){
+            for (Student student : students){
+                if (student.ID == ID) {
+                    System.out.println(student);
+                } else {
+                    System.out.println(ID + " not present.");
+                }
+            }
         }
     }
 
-    /*public void printStudentsById(){
-
-    }
-
-    public void removeStudentById() {
-
+    public void removeStudentById(String ID) {
+        for (List<Student> students : studentsMap.values()){
+            for (Student student : students){
+                if (student.ID == ID){
+                    students.remove(student);
+                    System.out.println(ID + " Student removed");
+                    break;
+                } else {
+                    System.out.println(ID + " not present.");
+                }
+            }
+        }
     }
 
     public void printAllStudents(){
+        for (List<Student> students : studentsMap.values()){
+            for (Student s : students){
+                System.out.println(s);
+            }
 
+        }
     }
-     */
+
 }
