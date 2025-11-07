@@ -18,7 +18,7 @@
 3. jUnit
 
 ## Exercices
-1. Create a Java app to track info about students from a college.
+1. [Create a Java app to track info about students from a college.](https://github.com/soitirakis/Java_QA_Complete/tree/main/Week5/src/main/java/org/example/faculty)
     - Create an enum Specialization <code>INFORMATICS, MATHEMATICS, BIOLOGY, CHEMISTRY</code>
     - Create a <code>Student</code> class.
       - <code>name(String)</code>
