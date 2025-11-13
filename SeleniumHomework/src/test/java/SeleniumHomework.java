@@ -9,12 +9,40 @@ import java.time.Duration;
 public class SeleniumHomework {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        //TODO 01.
         driver.get("https://9gag.com/");
+
+        //TODO 02. //nu functioneza - o such element: Unable to locate element
+       // WebElement oldMeme = driver.findElement(By.xpath("//div[contains(text(), \"Old Meme\")]"));
+        //oldMeme.click();
+
+        //TODO 03.
+        WebElement newsButton = driver.findElement(By.xpath("//div[@class=\"home-tab-bar__tab home-tab-bar__tab-news\"]"));
+        newsButton.click();
+
+        //TODO 04 //nu functioneza - no such element: Unable to locate element: {"method":"xpath","selector":"//a[@href="/trending"]"}
+        // WebElement trendingButton = driver.findElement(By.xpath("//a[@href=\"/trending\"]"));
+        //trendingButton.click();
+
+
+        //TODO 05.
+        WebElement potatozButton = driver.findElement(By.xpath("//nav[@class=\"nav-menu\"]//a[@href=\"https://www.instagram.com/potatozzz\"]"));
+        potatozButton.click();
+
+        //TODO 06.
+        //WebElement searchInput = driver.findElement(By.xpath("//input[@placeholder='Search...']"));
+        //searchInput.sendKeys("'happy to know that are still good people in the world'");
+
+        WebElement searchInput = wait.until (
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Search...']"))
+        );
+        searchInput.sendKeys("'happy to know that are still good people in the world'");
 
        // CookieUtils.acceptCookiesIfPresent(driver);
 
-       // WebElement trendingButton = driver.findElement(By.xpath("//article[@id=\"jsid-post-awyP97B\"]//h1"));
-        // trendingButton.click();
+
 
       /*  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement cookie = wait.until(
@@ -23,30 +51,12 @@ public class SeleniumHomework {
                 );
 
         cookie.click();*/
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+       /* JavascriptExecutor js = (JavascriptExecutor) driver;
         WebElement cookie = driver.findElement(By.xpath("//div[@id='sp_message_container_1395349']"));
-        js.executeScript("arguments[0].setAttribute('style', 'display:none')", cookie);
+        js.executeScript("arguments[0].setAttribute('style', 'display:none')", cookie);*/
 
 
        // cookie.click();
-
-        WebElement newsButton = driver.findElement(By.xpath("//div[@class=\"home-tab-bar__tab home-tab-bar__tab-news\"]/h2"));
-        newsButton.click();
-
-        WebElement potatozButton = driver.findElement(By.xpath("//nav[@class=\"nav-menu\"]//a[@href=\"https://www.instagram.com/potatozzz\"]"));
-        potatozButton.click();
-
-       /* WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement oldMeme = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(
-                        By.xpath("//a[contains(@class ,'drawer-menu-item') and contains(@href, '/interest/oldmeme')]")
-                )
-        );
-        oldMeme.click();*/
-
-       // WebElement oldMeme = driver.findElement(By.xpath("//a[@class='drawer-menu-item' and contains(@href, '/interest/oldmeme')]"));
-        //oldMeme.click();
-
 
         //remove cookies
      /*   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -64,10 +74,8 @@ public class SeleniumHomework {
             System.out.println(e.getMessage());
         }
         driver.manage().deleteAllCookies();*/
-     /*   WebElement searchButton = driver.findElement(By.xpath("//a[@class='search']"));
-        searchButton.click();
 
-        WebElement searchInput = driver.findElement(By.xpath("//input[@placeholder='Search...']"));
-        searchInput.sendKeys("'happy to know that are still good people in the world'");*/
+
+
     }
 }
