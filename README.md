@@ -13,3 +13,4 @@ Strongly recommend.
 | 3    	 | [Week3 - Java OOP](https://github.com/soitirakis/Java_QA_Complete/tree/main/Week3)	             | OOP in Java. Encapsulation, Getters, Setters, Static variable             	|
 | 4    	 | [Week4 - Java OOP](https://github.com/soitirakis/Java_QA_Complete/tree/main/Week4)     	        | OOP in Java. Inheritance, Override, Keyword Super, Polymorphism, Interfaces   |
  | 5    | [Week5 - Java Collections](https://github.com/soitirakis/Java_QA_Complete/tree/main/Week5)                                                                    | Collections, Exceptions, JUnit
+| 6     | [Week6 - Selenium]()                                                                             | Selenium, xPath, CSS Selectors 
