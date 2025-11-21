@@ -1,5 +1,6 @@
 import com.google.common.annotations.VisibleForTesting;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -28,12 +29,12 @@ public class DemoQA {
 
         //TODO 01. Elements->Text box
 
-        WebElement elements = wait.until(
+        /*WebElement elements = wait.until(
                 ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"category-cards\"]/div[1]"))
-        );
-        //WebElement elements = driver.findElement(By.xpath("//div[@class=\"category-cards\"]/div[1]"));
+        );*/
+        WebElement elements = driver.findElement(By.xpath("//div[@class=\"category-cards\"]/div[1]"));
         //clickWithActions(driver, elements);
-        new Actions(driver).click(elements).perform();
+        new Actions(driver).moveToElement(elements).pause(Duration.ofSeconds(1)).click(elements).perform();
 
 
         //TODO 02. Text box
@@ -53,8 +54,8 @@ public class DemoQA {
         WebElement inputUserPermanentAddress = driver2.findElement(By.xpath("//textarea[@id=\"permanentAddress\"]"));
         inputUserPermanentAddress.sendKeys(userPermanentAddress);
 
-        //WebElement submitButton = driver2.findElement(By.xpath("//button[@id=\"submit\"]"));
-       // submitButton.click();
+        WebElement submitButton = driver2.findElement(By.xpath("//button[@id=\"submit\"]"));
+        new Actions(driver2).click(submitButton).perform();
 
         //TODO 04. Elements -> Check box -> Desktop + Documents
         WebElement checkBox = driver2.findElement(By.xpath("//ul[@class=\"menu-list\"]/li[@id=\"item-1\"]/span[contains(text(), \"Check Box\")]"));
