@@ -2,8 +2,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,6 +11,7 @@ public class OrangeHRM {
     public static void main(String[] args) {
         WebDriver  driver = new ChromeDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        String userToSearch = "Victor Cypress Tester";
 
 
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
@@ -48,7 +47,7 @@ public class OrangeHRM {
         WebElement searchByName = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"oxd-grid-item oxd-grid-item--gutters\"][1]//input"))
         );
-        searchByName.sendKeys("aaa");
+        searchByName.sendKeys(userToSearch);
 
         WebElement searchButton = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type=\"submit\"]"))
@@ -57,7 +56,7 @@ public class OrangeHRM {
 
         //TODO 04. access the user page
         WebElement selectFirstElement = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"oxd-table-body\"]/div[@class=\"oxd-table-card\"][1]"))
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"oxd-table-body\"]/div[@class=\"oxd-table-card\"]"))
         );
         selectFirstElement.click();
 
