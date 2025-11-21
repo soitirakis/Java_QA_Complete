@@ -1,3 +1,4 @@
+import com.google.common.annotations.VisibleForTesting;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -5,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.junit.Test;
+import org.junit.Assert;
 
 import java.time.Duration;
 
@@ -26,10 +29,12 @@ public class DemoQA {
         //TODO 01. Elements->Text box
 
         WebElement elements = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"category-cards\"]/div[1]"))
+                ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"category-cards\"]/div[1]"))
         );
-               //driver.findElement(By.xpath("//div[@class=\"category-cards\"]/div[1]"));
-        clickWithActions(driver, elements);
+        //WebElement elements = driver.findElement(By.xpath("//div[@class=\"category-cards\"]/div[1]"));
+        //clickWithActions(driver, elements);
+        new Actions(driver).click(elements).perform();
+
 
         //TODO 02. Text box
         WebElement textBox = driver2.findElement(By.xpath("//ul[@class=\"menu-list\"]/li[@id=\"item-0\"]/span[contains(text(), \"Text Box\")]"));
@@ -75,5 +80,18 @@ public class DemoQA {
     public static void clickWithActions(WebDriver driver, WebElement element){
         Actions actions = new Actions(driver);
         actions.moveToElement(element).click().perform();
+    }
+
+    @Test
+    public void clickandRelease(){
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://demoqa.com/");
+
+        WebElement clickable = driver.findElement(By.xpath("//div[@class=\"category-cards\"]/div[1]"));
+
+        new Actions(driver).click(clickable).perform();
+
+        Assert.assertTrue(driver.getCurrentUrl().contains("https://demoqa.com/elements"));
+
     }
 }
