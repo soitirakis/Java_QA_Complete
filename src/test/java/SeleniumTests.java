@@ -16,10 +16,10 @@ public class SeleniumTests {
 
     @Test
     public static void createUser(){
-        String userFirstName = "Andrei";
+       /* String userFirstName = "Andrei";
         String userLastName = "Andy";
         String userEmail = "andrei123@example.com";
-        String userPassword = "andrei123";
+        String userPassword = "andrei123";*/
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -30,20 +30,20 @@ public class SeleniumTests {
         signUpButton.click();
 
         WebElement firstNameInput = driver.findElement(By.id("firstName"));
-        //firstNameInput.sendKeys("Razvan");
-        firstNameInput.sendKeys(userFirstName);
+        firstNameInput.sendKeys("Razvan");
+        //firstNameInput.sendKeys(userFirstName);
 
         WebElement lastNameInput = driver.findElement(By.id("lastName"));
-        //lastNameInput.sendKeys("Pruteanu");
-        lastNameInput.sendKeys(userLastName);
+        lastNameInput.sendKeys("Pruteanu");
+       // lastNameInput.sendKeys(userLastName);
 
         WebElement emailInput = driver.findElement(By.id("email"));
-        //emailInput.sendKeys(Utils.generateRandomEmail());
-        emailInput.sendKeys(userEmail);
+        emailInput.sendKeys(Utils.generateRandomEmail());
+        //emailInput.sendKeys(userEmail);
 
         WebElement passwordInput = driver.findElement(By.id("password"));
-        //passwordInput.sendKeys("JKDHAKDHiiufd*&*&98_");
-        passwordInput.sendKeys(userPassword);
+        passwordInput.sendKeys("JKDHAKDHiiufd*&*&98_");
+        //passwordInput.sendKeys(userPassword);
 
         WebElement submitButton = driver.findElement(By.id("submit"));
         submitButton.click();
