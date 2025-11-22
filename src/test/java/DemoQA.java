@@ -1,11 +1,9 @@
-import com.google.common.annotations.VisibleForTesting;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.junit.Test;
 import org.junit.Assert;
@@ -14,12 +12,12 @@ import java.time.Duration;
 
 public class DemoQA {
     public static void main(String[] args) {
-        WebDriver driver = new ChromeDriver();
+       // WebDriver driver = new ChromeDriver();
         WebDriver driver2 = new ChromeDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver2, Duration.ofSeconds(10));
 
-        driver.get("https://demoqa.com/");
-        driver2.get("https://demoqa.com/elements");
+       // driver.get("https://demoqa.com/");
+        driver2.get("https://demoqa.com");
 
         String userName = "Andrei";
         String userEmail = "someEmail.com";
@@ -28,13 +26,10 @@ public class DemoQA {
 
 
         //TODO 01. Elements->Text box
-
-        /*WebElement elements = wait.until(
-                ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"category-cards\"]/div[1]"))
-        );*/
-        WebElement elements = driver.findElement(By.xpath("//div[@class=\"category-cards\"]/div[1]"));
-        //clickWithActions(driver, elements);
-        new Actions(driver).moveToElement(elements).pause(Duration.ofSeconds(1)).click(elements).perform();
+        WebElement elements = driver2.findElement(By.xpath("//div[@class=\"category-cards\"]/div[1]"));
+        //Scroll into view (sometimes cards are below the fold)
+        ((JavascriptExecutor) driver2).executeScript("arguments[0].scrollIntoView(true);", elements);
+        new Actions(driver2).click(elements).perform();
 
 
         //TODO 02. Text box
