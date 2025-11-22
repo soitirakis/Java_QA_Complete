@@ -1,4 +1,3 @@
-import jdk.jshell.execution.Util;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,8 +6,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import scoalaInformala.ContactList;
 import scoalaInformala.LandingPage;
+import scoalaInformala.ContactListPage;
 import utils.Utils;
 
 import java.time.Duration;
@@ -45,10 +44,6 @@ public class SeleniumTests {
         Assert.assertTrue(contactListHeaderFound.isDisplayed());
 
         driver.close();
-
-
-
-
     }
 
     @Test
@@ -62,14 +57,12 @@ public class SeleniumTests {
         landingPage.passwordInput.sendKeys("testr123456789");
         landingPage.submitButton.click();
 
-        ContactList  contactList = new ContactList(driver);
+        ContactListPage  contactListPage = new ContactListPage(driver);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        WebElement contactListHeader = wait.until(ExpectedConditions.visibilityOfElementLocated(contactList.contactListHeaderBy));
+        WebElement contactListHeader = wait.until(ExpectedConditions.visibilityOf(contactListPage.contactListHeader));
         Assert.assertTrue(contactListHeader.isDisplayed());
 
         driver.close();
-
     }
 
 

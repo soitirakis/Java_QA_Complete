@@ -1,23 +1,29 @@
 package scoalaInformala;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
 
 public class LandingPage {
 
-    WebDriver driver;
-    public WebElement passwordInput;
-    public WebElement emailInput;
-    public WebElement submitButton;
-    public WebElement signUpButton;
+    private final WebDriver driver;
 
     public LandingPage(WebDriver driver) {
         this.driver = driver;
-        this.emailInput = driver.findElement(By.id("email"));
-        this.passwordInput = driver.findElement(By.id("password"));
-        this.submitButton = driver.findElement(By.id("submit"));
-        this.signUpButton = driver.findElement(By.id("signup"));
+        PageFactory.initElements(driver, this);
     }
 
+    @FindBy(id = "email")
+    public WebElement emailInput;
+
+    @FindBy(id = "password")
+    public WebElement passwordInput;
+
+    @FindBy(id = "submit")
+    public WebElement submitButton;
+
+    @FindBy(id = "signup")
+    public WebElement signUpButton;
 }
