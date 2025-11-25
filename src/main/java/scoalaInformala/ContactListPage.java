@@ -24,6 +24,4 @@ public class ContactListPage {
 
     @FindBy(xpath = "//button[@id='add-contact']")
     public WebElement addANewContact;
-
-    
 }

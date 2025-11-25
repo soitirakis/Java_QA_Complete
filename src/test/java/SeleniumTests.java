@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import scoalaInformala.AddContactPage;
+import scoalaInformala.ContactListPage;
 import scoalaInformala.LandingPage;
 import utils.Utils;
 
@@ -45,6 +47,24 @@ public class SeleniumTests {
 
         driver.close();
     }
+    @Test
+    public static void login(){
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://thinking-tester-contact-list.herokuapp.com/");
+
+        LandingPage landingPage = new LandingPage(driver);
+        landingPage.emailInput.sendKeys("testr@tesr.com");
+        landingPage.passwordInput.sendKeys("testr123456789");
+        landingPage.submitButton.click();
+
+        ContactListPage contactListPage = new ContactListPage(driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement contactListHeader = wait.until(ExpectedConditions.visibilityOf(contactListPage.contactListHeader));
+        Assert.assertTrue(contactListHeader.isDisplayed());
+
+        driver.close();
+    }
 
     @Test
     public static void addContact(){
@@ -53,8 +73,28 @@ public class SeleniumTests {
         driver.get("https://thinking-tester-contact-list.herokuapp.com/");
 
         LandingPage landingPage = new LandingPage(driver);
-        landingPage.emailInput.sendKeys("testr@");
+        landingPage.emailInput.sendKeys("testr@tesr.com");
+        landingPage.passwordInput.sendKeys("testr123456789");
+        landingPage.submitButton.click();
+
+        ContactListPage contactListPage = new ContactListPage(driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement contactListHeader = wait.until(ExpectedConditions.visibilityOf(contactListPage.contactListHeader));
+        contactListPage.addANewContact.click();
+
+        AddContactPage addContactPage = new AddContactPage(driver);
+        addContactPage.firstName.sendKeys(Utils.generateRandomName());
+        addContactPage.lastName.sendKeys(Utils.generateRandomName());
+        addContactPage.birthDate.sendKeys(Utils.generateRandomBirthDate());
+        addContactPage.email.sendKeys(Utils.generateRandomEmail());
+        addContactPage.phone.sendKeys(Utils.generateRandomPhone());
+        addContactPage.street1.sendKeys("SomeStree1");
+        addContactPage.street2.sendKeys("SomeStree2");
+        String city= Utils.generateRandomCity();
+        addContactPage.city.sendKeys(city);
+        addContactPage.stateProvince.sendKeys(Utils.generateProvence(city));
+        addContactPage.postalCode.sendKeys("");
+        addContactPage.country.sendKeys("Romania");
+        //addContactPage.submit.click();
     }
-
-
 }
