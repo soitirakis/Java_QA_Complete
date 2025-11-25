@@ -1,7 +1,5 @@
 package utils;
 
-import net.bytebuddy.asm.Advice;
-
 import java.util.*;
 import java.time.LocalDate;
 
@@ -62,9 +60,9 @@ public class Utils {
         return city;
     }
 
-    public static String generateProvence(String city) {
+    public static Map generateCounties() {
 
-        String[] counties = {"Alba", "Teleorman", "Arad", "Bacau", "Maramures", "Bistrita-Nasaud", "Botosani", "Brasov", "Braila",
+        String[] counties = {"Alba", "Teleorman", "Arad", "Bacau", "Maramures", "Bistrita-Nasaud", "Botosani", "Brasov", "Braila", "Bucuresti",
                  "Buzau", "Calarasi", "Cluj", "Constanta", "Dolj", "Hunedoara", "Mehedinti", "Vrancea",
                 "Galati", "Giurgiu", "Iasi", "Harghita", "Bihor", "Neamt", "Arges", "Prahova", "Valcea",
                 "Caras-Severin", "Satu Mare", "Covasna", "Sibiu", "Olt", "Ialomita", "Suceava", "Dambovita", "Gorj",
@@ -81,8 +79,19 @@ public class Utils {
            provences.put(counties[i], cities[i]);
        }
 
-        System.out.println(provences);
-        String provence = provences.get(city);
-        return "Alba";
+       return provences;
+    }
+
+    public static String generateProvence(String city) {
+        Map<String, String> counties = new LinkedHashMap<>();
+        counties = generateCounties();
+
+        for (String county : counties.keySet()) {
+            if (counties.get(county).equals(city)){
+                System.out.println(county);
+                return county;
+            }
+        }
+        return null;
     }
 }

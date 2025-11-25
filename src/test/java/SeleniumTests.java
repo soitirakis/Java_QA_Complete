@@ -82,19 +82,26 @@ public class SeleniumTests {
         WebElement contactListHeader = wait.until(ExpectedConditions.visibilityOf(contactListPage.contactListHeader));
         contactListPage.addANewContact.click();
 
+        //variables
+        String firstName_ = Utils.generateRandomName();
+        String lastName_ = Utils.generateRandomName();
+        String city = Utils.generateRandomCity();
+
         AddContactPage addContactPage = new AddContactPage(driver);
-        addContactPage.firstName.sendKeys(Utils.generateRandomName());
-        addContactPage.lastName.sendKeys(Utils.generateRandomName());
+        addContactPage.firstName.sendKeys(firstName_);
+        addContactPage.lastName.sendKeys(lastName_);
         addContactPage.birthDate.sendKeys(Utils.generateRandomBirthDate());
         addContactPage.email.sendKeys(Utils.generateRandomEmail());
         addContactPage.phone.sendKeys(Utils.generateRandomPhone());
         addContactPage.street1.sendKeys("SomeStree1");
         addContactPage.street2.sendKeys("SomeStree2");
-        String city= Utils.generateRandomCity();
         addContactPage.city.sendKeys(city);
         addContactPage.stateProvince.sendKeys(Utils.generateProvence(city));
         addContactPage.postalCode.sendKeys("");
         addContactPage.country.sendKeys("Romania");
-        //addContactPage.submit.click();
+        addContactPage.submit.click();
+
+        WebElement newContactAdded = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[text() ='"+firstName_+" "+lastName_+"']")));
+        Assert.assertTrue(newContactAdded.isDisplayed());
     }
 }
