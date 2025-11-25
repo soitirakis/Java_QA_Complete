@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import scoalaInformala.LandingPage;
 import utils.Utils;
 
 import java.time.Duration;
@@ -43,10 +44,16 @@ public class SeleniumTests {
         Assert.assertTrue(contactListHeaderFound.isDisplayed());
 
         driver.close();
+    }
 
+    @Test
+    public static void addContact(){
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://thinking-tester-contact-list.herokuapp.com/");
 
-
-
+        LandingPage landingPage = new LandingPage(driver);
+        landingPage.emailInput.sendKeys("testr@");
     }
 
 
