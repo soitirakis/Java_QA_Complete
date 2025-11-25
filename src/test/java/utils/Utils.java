@@ -5,6 +5,18 @@ import java.time.LocalDate;
 
 public class Utils {
 
+    static String[] counties = {"Alba", "Teleorman", "Arad", "Bacau", "Maramures", "Bistrita-Nasaud", "Botosani", "Brasov", "Braila", "Bucuresti",
+            "Buzau", "Calarasi", "Cluj", "Constanta", "Dolj", "Hunedoara", "Mehedinti", "Vrancea",
+            "Galati", "Giurgiu", "Iasi", "Harghita", "Bihor", "Neamt", "Arges", "Prahova", "Valcea",
+            "Caras-Severin", "Satu Mare", "Covasna", "Sibiu", "Olt", "Ialomita", "Suceava", "Dambovita", "Gorj",
+            "Mures", "Timis", "Tulcea", "Vaslui", "Salaj"};
+
+    static String[] cities = {"Alba-Iulia", "Alexandria", "Arad", "Bacau", "Baia Mare", "Bistrita", "Botosani", "Brasov", "Braila",
+            "Bucuresti", "Buzau", "Calarasi", "CLuj-Napoca", "Constanta", "Craiova", "Deva", "Drobeta-Turnu Severin", "Focasni",
+            "Galati", "Giurgiu", "Iasi", "Miercurea Ciuc", "Oradea", "Piatra Neamt", "Pitesti", "Ploiesti", "Ramnicu Valcea",
+            "Resita", "Satu Mare", "Sfantu Gheorghe", "Sibiu", "Slatina", "Slobozia", "Suceava", "Targoviste", "Targu Jiu",
+            "Targu Mures", "Timisoara", "Tulcea", "Vaslui", "Zalau"};
+
     public static String generateRandomEmail() {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         StringBuilder email = new StringBuilder();
@@ -49,11 +61,6 @@ public class Utils {
     }
 
     public static String generateRandomCity() {
-        String[] cities = {"Alba-Iulia", "Alexandria", "Arad", "Bacau", "Baia Mare", "Bistrita", "Botosani", "Brasov", "Braila",
-                "Bucuresti", "Buzau", "Calarasi", "CLuj-Napoca", "Constanta", "Craiova", "Deva", "Drobeta-Turnu Severin", "Focasni",
-                "Galati", "Giurgiu", "Iasi", "Miercurea Ciuc", "Oradea", "Piatra Neamt", "Pitesti", "Ploiesti", "Ramnicu Valcea",
-                "Resita", "Satu Mare", "Sfantu Gheorghe", "Sibiu", "Slatina", "Slobozia", "Suceava", "Targoviste", "Targu Jiu",
-                "Targu Mures", "Timisoara", "Tulcea", "Vaslui", "Zalau"};
         Random rnd = new Random();
         int index = (int) (rnd.nextFloat() * cities.length);
         String city = cities[index];
@@ -61,18 +68,6 @@ public class Utils {
     }
 
     public static Map generateCounties() {
-
-        String[] counties = {"Alba", "Teleorman", "Arad", "Bacau", "Maramures", "Bistrita-Nasaud", "Botosani", "Brasov", "Braila", "Bucuresti",
-                 "Buzau", "Calarasi", "Cluj", "Constanta", "Dolj", "Hunedoara", "Mehedinti", "Vrancea",
-                "Galati", "Giurgiu", "Iasi", "Harghita", "Bihor", "Neamt", "Arges", "Prahova", "Valcea",
-                "Caras-Severin", "Satu Mare", "Covasna", "Sibiu", "Olt", "Ialomita", "Suceava", "Dambovita", "Gorj",
-                "Mures", "Timis", "Tulcea", "Vaslui", "Salaj"};
-
-        String[] cities = {"Alba-Iulia", "Alexandria", "Arad", "Bacau", "Baia Mare", "Bistrita", "Botosani", "Brasov", "Braila",
-                "Bucuresti", "Buzau", "Calarasi", "CLuj-Napoca", "Constanta", "Craiova", "Deva", "Drobeta-Turnu Severin", "Focasni",
-                "Galati", "Giurgiu", "Iasi", "Miercurea Ciuc", "Oradea", "Piatra Neamt", "Pitesti", "Ploiesti", "Ramnicu Valcea",
-                "Resita", "Satu Mare", "Sfantu Gheorghe", "Sibiu", "Slatina", "Slobozia", "Suceava", "Targoviste", "Targu Jiu",
-                "Targu Mures", "Timisoara", "Tulcea", "Vaslui", "Zalau"};
 
        Map<String, String> provences = new LinkedHashMap<>();
        for (int i = 0; i < counties.length; i++) {
