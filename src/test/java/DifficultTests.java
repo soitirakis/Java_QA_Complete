@@ -28,6 +28,7 @@ public class DifficultTests {
     @Test
     public void firstTest(){
         WebDriver driver = new ChromeDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get("https://ghost.org/");
 
@@ -73,11 +74,11 @@ public class DifficultTests {
         //System.out.println(audienceMembersNoAfter.getText());
 
 
-        WebElement finalPricePublisher = new WebDriverWait(driver, Duration.ofSeconds(10))
+        WebElement finalPricePublisher = wait
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()='141']")));
         String finalPricePublisherValue = finalPricePublisher.getText();
 
-        WebElement finalPriceBusiness = new WebDriverWait(driver, Duration.ofSeconds(10))
+        WebElement finalPriceBusiness = wait
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()='266']")));
         String finalPriceBusinessValue = finalPriceBusiness.getText();
 
