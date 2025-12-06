@@ -95,7 +95,13 @@ public class DifficultTests {
 
         Assert.assertEquals(finalPricePublisherValue, "141");
         Assert.assertEquals(finalPriceBusinessValue, "266");
+        Assert.assertNotEquals(finalPriceBusinessValue, "260");
+
+        WebElement tryForFreeLinkStarter = driver.findElement(By.xpath("//a[contains(@href, 'signup') and contains(text(), 'Try for free')]"));
+        String classesTryForFreeLinkStarter = tryForFreeLinkStarter.getAttribute("class");
+
+        Assert.assertTrue(classesTryForFreeLinkStarter.contains("opacity-60 cursor-not-allowed"));
+
 
     }
-
 }
