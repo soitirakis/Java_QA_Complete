@@ -49,12 +49,11 @@ public class DifficultTests {
 //      A. Navigate to https://ghost.org/
         HomePage homePage = new HomePage(driver);
         homePage.open();
-//
+//      B. Navigate to "Start here" section using the "Resources" menu.
         HeaderNavigation headerNavigation = new HeaderNavigation(driver);
         headerNavigation.clickResourcesButton();
-        //headerNavigation.clickStartHereButton();
         ResourcePage resourcePage = headerNavigation.clickStartHereButton();
-
+//      C. Search for “create new blog”
         resourcePage.searchFor("create new blog");
         BlogPage blogPage = resourcePage.clickSearchResult();
     }
