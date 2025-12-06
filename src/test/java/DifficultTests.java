@@ -59,8 +59,10 @@ public class DifficultTests {
         System.out.println(audienceMembersNo.getText());
 
         WebElement initialPricePublisher = driver.findElement(By.xpath("//p[contains(@data-price, \"publisher\")]"));
-        System.out.println(initialPricePublisher.getText());
         String initialPricePublisherValue = initialPricePublisher.getText();
+
+        WebElement initialPriceBusiness = driver.findElement(By.xpath("//p[contains(@data-price, \"business\")]"));
+        String initialPriceBusinessValue = initialPriceBusiness.getText();
 
         while (!audienceMembersNo.getText().contains("25k")) {
             sliderInput.sendKeys(Keys.ARROW_RIGHT);
@@ -70,11 +72,25 @@ public class DifficultTests {
         //WebElement audienceMembersNoAfter = driver.findElement(By.xpath("//span[contains(@class, 'js-tooltip-count')]"));
         //System.out.println(audienceMembersNoAfter.getText());
 
-        WebElement finalPricePublisher = driver.findElement(By.xpath("//p[contains(@data-price, \"publisher\")]"));
-        System.out.println(finalPricePublisher.getText());
+
+        WebElement finalPricePublisher = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()='141']")));
+        String finalPricePublisherValue = finalPricePublisher.getText();
+
+        WebElement finalPriceBusiness = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()='266']")));
+        String finalPriceBusinessValue = finalPriceBusiness.getText();
+
 
         Assert.assertEquals(initialPricePublisherValue, "29");
-        Assert.assertEquals(finalPricePublisher.getText(), "141");
+        Assert.assertEquals(initialPriceBusinessValue, "199");
+
+
+        Assert.assertEquals(finalPricePublisherValue, "141");
+        Assert.assertEquals(finalPriceBusinessValue, "266");
+
+
+
 
 
     }
