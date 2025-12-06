@@ -74,12 +74,18 @@ public class DifficultTests {
         //System.out.println(audienceMembersNoAfter.getText());
 
 
-        WebElement finalPricePublisher = wait
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()='141']")));
+        By publisherPriceBy = By.xpath("//p[contains(@data-price, \"publisher\")]");
+        By businessPriceBy = By.xpath("//p[contains(@data-price, \"business\")]");
+
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(publisherPriceBy, "141"));
+
+        WebElement finalPricePublisher = driver.findElement(By.xpath("//p[contains(@data-price, \"publisher\")]"));
         String finalPricePublisherValue = finalPricePublisher.getText();
 
-        WebElement finalPriceBusiness = wait
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()='266']")));
+
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(businessPriceBy, "266"));
+
+        WebElement finalPriceBusiness = driver.findElement(By.xpath("//p[contains(@data-price, \"business\")]"));
         String finalPriceBusinessValue = finalPriceBusiness.getText();
 
 
@@ -89,10 +95,6 @@ public class DifficultTests {
 
         Assert.assertEquals(finalPricePublisherValue, "141");
         Assert.assertEquals(finalPriceBusinessValue, "266");
-
-
-
-
 
     }
 
