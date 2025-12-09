@@ -12,6 +12,9 @@ public class HeaderNavigation extends BasePage{
     @FindBy(xpath = "//p[contains(text(),'Start here')]")
     private WebElement startHereButton;
 
+    @FindBy(xpath = "//a[text()='Pricing']")
+    private WebElement pricingButton;
+
     public HeaderNavigation(WebDriver driver) {
         super(driver);
     }
@@ -25,4 +28,8 @@ public class HeaderNavigation extends BasePage{
         return new ResourcePage(driver);
     }
 
+    public PricingPage clickPricingButton() {
+        pricingButton.click();
+        return new PricingPage(driver);
+    }
 }

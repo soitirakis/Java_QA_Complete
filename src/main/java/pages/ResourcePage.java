@@ -4,10 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
+import utils.WaitUtils;
 
 public class ResourcePage extends BasePage {
 
@@ -28,8 +25,7 @@ public class ResourcePage extends BasePage {
     }
 
     public BlogPage clickSearchResult() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(tenthSearchResultBy));
+        WaitUtils.visibilityOfElementLocated(tenthSearchResultBy);
         tenthSearchResult.click();
         return new BlogPage(driver);
     }

@@ -6,16 +6,16 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.BlogPage;
-import pages.HeaderNavigation;
-import pages.HomePage;
-import pages.ResourcePage;
+import pages.*;
 import utils.DriverFactory;
 
+
 import java.time.Duration;
+
+import static utils.Constants.PUBLISHER_PRICE;
+import static utils.Constants.BUSINESS_PRICE;
 
 
 public class DifficultTests {
@@ -39,11 +39,11 @@ public class DifficultTests {
         driver.manage().window().maximize();
     }
 
-    @AfterMethod
+    /*@AfterMethod
     public void tearDown() {
         DriverFactory.closeDriver();
     }
-
+*/
     @Test
     public void ghostTestPom() {
 //      A. Navigate to https://ghost.org/
@@ -54,8 +54,23 @@ public class DifficultTests {
         headerNavigation.clickResourcesButton();
         ResourcePage resourcePage = headerNavigation.clickStartHereButton();
 //      C. Search for “create new blog”
-        resourcePage.searchFor("create new blog");
+        resourcePage.searchFor(ConstantsTest.SEARCH_FOR);
+//      D. Open the 10th result
         BlogPage blogPage = resourcePage.clickSearchResult();
+//      E. Scroll to the top of the page and open the “Pricing” section
+        PricingPage pricingPage = headerNavigation.clickPricingButton();
+//      F. Change the “Based on an audience” slider to 25k members and verify that all the
+//    prices have increased.
+        pricingPage.pushSliderCount("25k");
+        String publisherPrice = pricingPage.getPublisherPriceValue();
+        System.out.println("Publisher price is: " + publisherPrice);
+        String businessPrice = pricingPage.getBusinessPriceValue();
+        System.out.println("Business price is: " + businessPrice);
+
+        Assert.assertEquals(publisherPrice, PUBLISHER_PRICE);
+        Assert.assertEquals(businessPrice, BUSINESS_PRICE);
+        Assert.assertNotEquals(publisherPrice, PUBLISHER_PRICE);
+
     }
 
 
