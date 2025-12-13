@@ -1,4 +1,4 @@
-# DemoQA
+# POM structure
 
 
 
