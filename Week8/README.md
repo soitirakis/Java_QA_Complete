@@ -1,4 +1,4 @@
-# DemoQA
+# Thinking tester SeleniumTests
 
 - Having the following URL: [Thinking tester.com](https://thinking-tester-contact-list.herokuapp.com/)
 
