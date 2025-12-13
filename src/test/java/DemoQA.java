@@ -14,6 +14,7 @@ public class DemoQA {
     public static void main(String[] args) {
        // WebDriver driver = new ChromeDriver();
         WebDriver driver2 = new ChromeDriver();
+        driver2.manage().window().maximize();
         WebDriverWait wait = new WebDriverWait(driver2, Duration.ofSeconds(10));
 
        // driver.get("https://demoqa.com/");
