@@ -2,6 +2,13 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DemoQA" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/OrangeHRMTest" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/SeleniumIntron" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Week5" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Week6" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/andrei-06.12" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git-saturday" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/selenium-tests" vcs="Git" />
   </component>
 </project>
