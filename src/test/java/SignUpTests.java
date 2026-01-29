@@ -25,20 +25,10 @@ public class SignUpTests extends BaseTests{
     }
     @Test
     public void testValidSignUp(){
-        String userEmail = signUpFile.getEmail();
-        String userPassword = signUpFile.getPassword();
-
         signUpFile = new SignUp("signUpValidUser");
         signUpPage.createNewAccount(signUpFile);
         Assert.assertTrue(contactListPage.isLogoutDisplayed());
         Assert.assertEquals(contactListPage.getHeaderText(), CONTACT_LIST_HEADER);
-    }
-    @Test
-    public void testEmailAlreadyExist() throws InterruptedException{
-        signUpFile = new SignUp("signUpValidUser");
-        signUpPage.createNewAccount(signUpFile);
-
-        Assert.assertEquals(signUpPage.getErrorMessage(), INVALID_EMAIL_ALREADY_IN_USE);
     }
     @Test
     public void testEmailAlreadyInUse() throws InterruptedException{
@@ -59,6 +49,13 @@ public class SignUpTests extends BaseTests{
         signUpFile = new SignUp("signUpEmptyData");
 
         signUpPage.createNewAccount(signUpFile);
-        Assert.assertEquals(signUpPage.getErrorMessage(), INVALID_FIRST_NAME);
+        Assert.assertEquals(signUpPage.getErrorMessage(), INVALID_MISSING_DATA);
+    }
+    @Test
+    public void testInvalidEmail() throws InterruptedException{
+        signUpFile = new SignUp("signUpInvalidEmail");
+
+        signUpPage.createNewAccount(signUpFile);
+        Assert.assertEquals(signUpPage.getErrorMessage(), INVALID_EMAIL);
     }
 }

@@ -2,7 +2,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.ContactDetailsPage;
-import pages.ContactListPage;
 import pages.EditContactPage;
 import testdata.classes.EditContact;
 
