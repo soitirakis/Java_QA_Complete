@@ -31,21 +31,29 @@ thinking-tester-final/
 │
 ├── src/
 │   ├── main/
-│   │   ├── java/
-│   │   │   └── pages/             # Page Object Model (POM) classes
-│   │   │       ├── BasePage.java
-│   │   │       ├── LoginPage.java
-│   │   │       └── HomePage.java
-│   │   │
-│   │   └── resources/             # Application resources
-│   │
+│   │   └── java/
+|   |        └── driver/            
+│   │          ├── DriverFactory.java
+│   │          ├── WaitUtils.java
+│   │        └── pages/               # Page Object Model (POM) classes
+│   │          ├── BasePage.java
+│   │          ├── LoginPage.java
+│   │          └── HomePage.java
+│   │        └── testdata/             # Test data classes, json files, constants 
+│   │          ├── classes
+│   │          ├── files
+│   │          └── pages
+│   │        └── utils/             
+│   │          ├── Reader.java
+│   │   
 │   └── test/
-│       ├── java/
-│       │   └── tests/             # Test classes
-│       │       ├── LoginTest.java
-│       │       └── SmokeTest.java
-│       │
-│       └── resources/             # Test resources (if any)
+│       └──  java/
+│             └── tests/             # Test classes
+│               ├── LoginTest.java
+│               └── BaseTests.java
+|               └── EditContactTests.java
+|               └── AddNewContactTest.java
+│                   
 │
 ├── pom.xml                        # Maven dependencies & build config
 ├── README.md                      # Project documentation
