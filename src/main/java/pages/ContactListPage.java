@@ -26,12 +26,28 @@ public class ContactListPage extends BasePage {
     private By nameCellValue(String name) {
         return By.xpath("//tr/td[contains(., \""+name+"\")]");
     }
+    private By birthdayCellValue(String name) {
+        return By.xpath("//tr/td[contains(.,\\\"\"+name+\"\\\")]/following-sibling::td[1]");
+    }
     private By emailCell(String name) {
         return By.xpath("//tr/td[contains(.,\""+name+"\")]/following-sibling::td[2]");
     }
-    private By rowElements(String name) {
-        return By.xpath("//tr[contains(.,\""+name+"\")]");
+    private By phoneCellValue(String name) {
+        return By.xpath("//tr/td[contains(.,\""+name+"\")]/following-sibling::td[3]");
     }
+    private By addressCellValue(String name) {
+        return By.xpath("//tr/td[contains(.,\""+name+"\")]/following-sibling::td[4]");
+    }
+    private By cityStateCodeCellValue(String name) {
+        return By.xpath("//tr/td[contains(.,\""+name+"\")]/following-sibling::td[5]");
+    }
+    private By countryCellValue(String name) {
+        return By.xpath("//tr/td[contains(.,\""+name+"\")]/following-sibling::td[6]");
+    }
+    private By rowElements(String name, int index) {
+        return By.xpath("//tr/td[contains(.,\""+name+"\")]/following-sibling::td[" + index + "]");
+    }
+
 
     //actions
     public boolean isLogoutDisplayed() {
@@ -60,7 +76,17 @@ public class ContactListPage extends BasePage {
     public String getEmailCellValue(String name){
         return driver.findElement(emailCell(name)).getText();
     }
-    public void clickOnRowElements(String name){
+    /*public void clickOnRowElements(String name){
         driver.findElement(rowElements(name)).click();
+    }*/
+    //generate a List will values from a given row[td/tr]
+    public List<String> getRowValues(String name) {
+        List<String> cellValues = new ArrayList<>();
+        for (int i = 1; i < 7; i++ ) {
+            String element = driver.findElement(rowElements(name, i)).getText();
+            cellValues.add(element);
+        }
+        return  cellValues;
     }
+
 }

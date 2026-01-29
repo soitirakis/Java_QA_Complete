@@ -12,7 +12,4 @@ public class BasePage {
         this.driver = driver;
         this.waitUtils = new WaitUtils(driver);
     }
-    public void navigate(String url) {
-        driver.get(url);
-    }
 }

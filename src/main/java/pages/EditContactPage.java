@@ -45,6 +45,7 @@ public class EditContactPage extends BasePage {
     }
 
     public String getHeaderText(){
+        WaitUtils.textToBePresentInElementLocated(header, "Edit Contact");
         return driver.findElement(header).getText();
     }
     public String getErrorMessage() throws InterruptedException{
@@ -102,7 +103,7 @@ public class EditContactPage extends BasePage {
     public void clickSubmitButton() {
         driver.findElement(submitButton).click();
     }
-    public void editContact(EditContact user) {
+    public void editContactNewData(EditContact user) {
         editFirstName(user.getFirstName());
         editLastName(user.getLastName());
         editBirthDate(user.getDob());

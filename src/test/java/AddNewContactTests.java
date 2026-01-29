@@ -16,8 +16,7 @@ import static testdata.pages.LoginTestData.HEADER_TITLE;
 public class AddNewContactTests extends BaseTests {
     static AddNewContactPage addNewContactPage;
 
-    NewContact newContact;
-
+    NewContact newContactFile;
 
     @BeforeMethod
     public void beforeMethod() {
@@ -34,29 +33,33 @@ public class AddNewContactTests extends BaseTests {
     }
     @Test
     public void testAddNewContactAllData() {
-        newContact = new NewContact("newAccount1");
-        addNewContactPage.addNewContact(newContact);
-        String firstName = newContact.getFirstName();
-        String lastName = newContact.getLastName();
+        newContactFile = new NewContact("newAccount1");
+        addNewContactPage.addNewContact(newContactFile);
+        String firstName = newContactFile.getFirstName();
+        String lastName = newContactFile.getLastName();
+        String address = newContactFile.getStreet1() + " " + newContactFile.getStreet2();
 
         List<String> names = contactListPage.getNameColumnValues();
         System.out.println(names.toString());
         Assert.assertTrue(names.contains(firstName+" "+lastName));
+
+        List<String> cellValues = contactListPage.getRowValues(firstName);
+        Assert.assertTrue(cellValues.contains(address));
     }
     @Test
     public void testAddNewContactRequiredData() {
-        newContact = new NewContact("newAccountMandatoryFields");
-        addNewContactPage.addNewContact(newContact);
-        String firstName = newContact.getFirstName();
-        String lastName = newContact.getLastName();
+        newContactFile = new NewContact("newAccountMandatoryFields");
+        addNewContactPage.addNewContact(newContactFile);
+        String firstName = newContactFile.getFirstName();
+        String lastName = newContactFile.getLastName();
 
         List<String> names = contactListPage.getNameColumnValues();
         Assert.assertTrue(names.contains(firstName+" "+lastName));
     }
     @Test
     public void testMissingRequiredFields() throws InterruptedException {
-        newContact = new NewContact("newAccountMissingRequiredFields");
-        addNewContactPage.addNewContact(newContact);
+        newContactFile = new NewContact("newAccountMissingRequiredFields");
+        addNewContactPage.addNewContact(newContactFile);
 
         Assert.assertEquals(addNewContactPage.getErrorMessage(), MISSING_MANDATORY_FIELDS);
     }

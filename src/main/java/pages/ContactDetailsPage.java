@@ -4,6 +4,10 @@ import driver.WaitUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static testdata.pages.ContactDetailsTestData.CONTACT_DETAILS_HEADER;
 
@@ -18,6 +22,7 @@ public class ContactDetailsPage extends BasePage{
     private By editButton = By.id("edit-contact");
     private By deleteButton = By.id("delete");
     private By returnToContactListButton = By.id("return");
+    private By contactDetailsValues = By.xpath("//span");
 
     private By firstNameValue = By.id("firstName");
     private By lastNameValue = By.id("lastName");
@@ -38,10 +43,10 @@ public class ContactDetailsPage extends BasePage{
         WaitUtils.visibilityOfElementLocated(header);
         return driver.findElement(header).getText();
     }
-    public void editContactDetails() {
+    public void editContactDetailsButton() {
         driver.findElement(editButton).click();
     }
-    public void deleteContactDetails() {
+    public void deleteContactDetailsButton() {
         driver.findElement(deleteButton).click();
         Alert alert = driver.switchTo().alert();
         alert.accept();
@@ -52,6 +57,16 @@ public class ContactDetailsPage extends BasePage{
     public String getFirstNameValue() {
         WaitUtils.visibilityOfElementLocated(firstNameValue);
         return  driver.findElement(firstNameValue).getText();
+    }
+    public List<String> getContactDetailsValues() {
+        WaitUtils.textToBePresentInElementLocated(header, CONTACT_DETAILS_HEADER);
+        WaitUtils.visibilityOfElementLocated(header);
+        List<WebElement> spans = driver.findElements(contactDetailsValues);
+        List<String> spanValues = new ArrayList<>();
+        for (WebElement span : spans) {
+           spanValues.add(span.getText());
+        }
+        return spanValues;
     }
 
 }
