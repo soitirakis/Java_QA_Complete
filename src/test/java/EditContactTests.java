@@ -50,4 +50,14 @@ public class EditContactTests extends BaseTests{
         //return to contactlistpage
         //check name present on page.
     }
+    @Test
+    public void deleteContact() {
+        editContactPage = new EditContactPage(driver);
+        contactDetailsPage.deleteContactDetails();
+
+        List<String> names = contactListPage.getNameColumnValues();
+
+        Assert.assertEquals(contactListPage.getHeaderText(), CONTACT_LIST_HEADER);
+        Assert.assertFalse(names.contains(nameToEdit));
+    }
 }
