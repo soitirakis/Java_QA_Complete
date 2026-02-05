@@ -1,6 +1,7 @@
 # QA Complete - JAVA Introduction 
 
-Week1 is an introduction to Java language. In this week you practice the basics. Syntax, Classes, Constructos, Access control 
+Week1 is an introduction to Java language. In this week you practice the basics. Syntax, Classes, Constructos,
+Access control 
 
 ## Exercices 
 
@@ -18,3 +19,9 @@ Week1 is an introduction to Java language. In this week you practice the basics.
    - two variables and assign to them at least 10 characters
    - execute all the arithmetical calculations (sum, substr, multipication, division)
    - print all the results 
+
+asdasd
+
+asdasd
+
+asdasd
