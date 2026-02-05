@@ -1,11 +1,13 @@
 package pages;
 
 import driver.WaitUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import testdata.classes.EditContact;
+import testdata.classes.NewEditContact;
+
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,10 +103,29 @@ public class EditContactPage extends BasePage {
         driver.findElement(countryInput).sendKeys(country);
     }
     public void clickSubmitButton() {
-        driver.findElement(submitButton).click();
+
+        //driver.findElement(submitButton).click();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+        WebElement btn = wait.until(ExpectedConditions.presenceOfElementLocated(submitButton));
+
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView({block:'center'});", btn
+        );
+
+        wait.until(ExpectedConditions.elementToBeClickable(submitButton));
+
+        try {
+            btn.click();
+        } catch (Exception e) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+        }
     }
-    public void editContactNewData(EditContact user) {
+    public void editContactNewData(NewEditContact user) {
         editFirstName(user.getFirstName());
+        System.out.println(driver.findElement(firstNameInput).getAttribute("value"));
+
         editLastName(user.getLastName());
         editBirthDate(user.getDob());
         editEmail(user.getEmail());
@@ -115,6 +136,35 @@ public class EditContactPage extends BasePage {
         editStateProvince(user.getStateProvince());
         editPostalCode(user.getPostalCode());
         editCountry(user.getCountry());
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        js.executeScript("""
+  window.__dbg = {click:false, submit:false, prevented:null, submits:0};
+  const btn = document.querySelector('#submit');
+  const form = document.querySelector('form');
+
+  if (btn) {
+    btn.addEventListener('click', (e) => {
+      window.__dbg.click = true;
+    }, true);
+  }
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      window.__dbg.submit = true;
+      window.__dbg.submits++;
+      // microtask: după ce handler-ele rulează, vedem dacă e preventDefault
+      Promise.resolve().then(() => window.__dbg.prevented = e.defaultPrevented);
+    }, true);
+  }
+""");
+
         clickSubmitButton();
+
+        Object dbg = ((JavascriptExecutor) driver).executeScript("return window.__dbg;");
+        System.out.println("DBG=" + dbg);
+        System.out.println("URL=" + driver.getCurrentUrl());
+
     }
 }

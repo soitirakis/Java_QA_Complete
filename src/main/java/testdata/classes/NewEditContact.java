@@ -2,7 +2,7 @@ package testdata.classes;
 
 import utils.Reader;
 
-public class NewContact {
+public class NewEditContact {
     private String firstName;
     private String lastName;
     private String dob;
@@ -15,7 +15,7 @@ public class NewContact {
     private String stateProvince;
     private String country;
 
-    public NewContact(String filename) {
+    public NewEditContact(String filename) {
         this.firstName = Reader.json(filename).get("firstName").toString();
         this.lastName = Reader.json(filename).get("lastName").toString();
         this.dob = Reader.json(filename).get("dob").toString();

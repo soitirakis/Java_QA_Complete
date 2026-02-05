@@ -39,8 +39,8 @@ public class ContactDetailsPage extends BasePage{
 
     //actions
     public String getHeaderText() {
-        WaitUtils.textToBePresentInElementLocated(header, CONTACT_DETAILS_HEADER);
         WaitUtils.visibilityOfElementLocated(header);
+        WaitUtils.textToBePresentInElementLocated(header, CONTACT_DETAILS_HEADER);
         return driver.findElement(header).getText();
     }
     public void editContactDetailsButton() {

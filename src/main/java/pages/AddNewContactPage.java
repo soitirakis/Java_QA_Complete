@@ -3,7 +3,7 @@ package pages;
 import driver.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import testdata.classes.NewContact;
+import testdata.classes.NewEditContact;
 
 import static testdata.pages.AddNewContactTestData.ADD_NEW_CONTACT_HEADER;
 
@@ -96,7 +96,7 @@ public class AddNewContactPage extends BasePage {
         clickSubmitButton();
     }
 
-    public void addNewContact(NewContact user) {
+    public void addNewContact(NewEditContact user) {
         addFirstName(user.getFirstName());
         addLastName(user.getLastName());
         addBirthDate(user.getDob());

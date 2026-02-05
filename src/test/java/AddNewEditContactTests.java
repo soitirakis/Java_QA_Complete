@@ -1,10 +1,8 @@
-import org.junit.Before;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.AddNewContactPage;
-import pages.BasePage;
-import testdata.classes.NewContact;
+import testdata.classes.NewEditContact;
 
 import java.util.List;
 
@@ -13,10 +11,10 @@ import static testdata.pages.AddNewContactTestData.MISSING_MANDATORY_FIELDS;
 import static testdata.pages.ContactListTestData.CONTACT_LIST_HEADER;
 import static testdata.pages.LoginTestData.HEADER_TITLE;
 
-public class AddNewContactTests extends BaseTests {
+public class AddNewEditContactTests extends BaseTests {
     static AddNewContactPage addNewContactPage;
 
-    NewContact newContactFile;
+    NewEditContact newEditContactFile;
 
     @BeforeMethod
     public void beforeMethod() {
@@ -33,11 +31,11 @@ public class AddNewContactTests extends BaseTests {
     }
     @Test
     public void testAddNewContactAllData() {
-        newContactFile = new NewContact("newAccount1");
-        addNewContactPage.addNewContact(newContactFile);
-        String firstName = newContactFile.getFirstName();
-        String lastName = newContactFile.getLastName();
-        String address = newContactFile.getStreet1() + " " + newContactFile.getStreet2();
+        newEditContactFile = new NewEditContact("newAccount1");
+        addNewContactPage.addNewContact(newEditContactFile);
+        String firstName = newEditContactFile.getFirstName();
+        String lastName = newEditContactFile.getLastName();
+        String address = newEditContactFile.getStreet1() + " " + newEditContactFile.getStreet2();
 
         List<String> names = contactListPage.getNameColumnValues();
         System.out.println(names.toString());
@@ -48,18 +46,18 @@ public class AddNewContactTests extends BaseTests {
     }
     @Test
     public void testAddNewContactRequiredData() {
-        newContactFile = new NewContact("newAccountMandatoryFields");
-        addNewContactPage.addNewContact(newContactFile);
-        String firstName = newContactFile.getFirstName();
-        String lastName = newContactFile.getLastName();
+        newEditContactFile = new NewEditContact("newAccountMandatoryFields");
+        addNewContactPage.addNewContact(newEditContactFile);
+        String firstName = newEditContactFile.getFirstName();
+        String lastName = newEditContactFile.getLastName();
 
         List<String> names = contactListPage.getNameColumnValues();
         Assert.assertTrue(names.contains(firstName+" "+lastName));
     }
     @Test
     public void testMissingRequiredFields() throws InterruptedException {
-        newContactFile = new NewContact("newAccountMissingRequiredFields");
-        addNewContactPage.addNewContact(newContactFile);
+        newEditContactFile = new NewEditContact("newAccountMissingRequiredFields");
+        addNewContactPage.addNewContact(newEditContactFile);
 
         Assert.assertEquals(addNewContactPage.getErrorMessage(), MISSING_MANDATORY_FIELDS);
     }

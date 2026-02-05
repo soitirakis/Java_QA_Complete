@@ -3,10 +3,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.SignUpPage;
 import testdata.classes.SignUp;
+import testdata.classes.UserData;
+import utils.Writer;
 
 import static testdata.pages.ContactListTestData.CONTACT_LIST_HEADER;
 import static testdata.pages.LoginTestData.HEADER_TITLE;
 import static testdata.pages.SignUpTestData.*;
+import static utils.RandomGenerator.generateRandomEmail;
+import static utils.RandomGenerator.generateRandomName;
 
 public class SignUpTests extends BaseTests{
     static SignUpPage signUpPage;
@@ -25,6 +29,14 @@ public class SignUpTests extends BaseTests{
     }
     @Test
     public void testValidSignUp(){
+        String firstName = generateRandomName();
+        String lastName = generateRandomName();
+        String email = generateRandomEmail();
+        String password = "abc1234";
+
+        UserData user =  new UserData(firstName, lastName, email, password);
+        Writer.writeValidNewUser(user, "signUpValidUser");
+
         signUpFile = new SignUp("signUpValidUser");
         signUpPage.createNewAccount(signUpFile);
         Assert.assertTrue(contactListPage.isLogoutDisplayed());

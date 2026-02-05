@@ -28,8 +28,8 @@ public class BaseTests {
 
         Assert.assertEquals(loginPage.getHeaderText(), HEADER_TITLE);
     }
-    @AfterMethod
+    /*@AfterMethod
     public void afterMethod() {
         DriverFactory.closeDriver();
-    }
+    }*/
 }

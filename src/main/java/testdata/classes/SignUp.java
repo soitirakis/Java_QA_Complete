@@ -2,6 +2,8 @@ package testdata.classes;
 
 import utils.Reader;
 
+import static utils.RandomGenerator.generateRandomEmail;
+
 public class SignUp {
     private String firstName;
     private String lastName;

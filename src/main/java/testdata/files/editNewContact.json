@@ -2,12 +2,12 @@
   "firstName" : "name1",
   "lastName" : "name2",
   "dob" : "3999-12-12",
-  "email" : "extra@email.com",
+  "email" : "extra1235@email.com",
   "phone" : "07123123123",
   "street1" : "street111",
   "street2" : "street222",
-  "postalCode" : "",
-  "stateProvince" : "",
+  "postalCode" : "123123",
+  "stateProvince" : "province",
   "city" : "city",
   "country" : "Country"
 }
