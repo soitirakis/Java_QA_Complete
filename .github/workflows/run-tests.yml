@@ -44,20 +44,23 @@ jobs:
           path: gh-pages
         continue-on-error: true
 
+      - name: Copy Allure history
+        run: |
+          if [ -d gh-pages/history ]; then
+            mkdir -p Week11/thinking-tester-final/target/allure-results/history
+            cp -r gh-pages/history/* Week11/thinking-tester-final/target/allure-results/history/
+          fi
+
       - name: Generate Allure report
-        uses: simple-elf/allure-report-action@v1.7
-        with:
-          allure_results: Week11/thinking-tester-final/target/allure-results
-          gh_pages: gh-pages
-          allure_report: allure-report
-          allure_history: allure-history
+        working-directory: Week11/thinking-tester-final
+        run: mvn allure:report
 
       - name: Deploy Allure report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: allure-history
+          publish_dir: Week11/thinking-tester-final/target/site/allure-maven-plugin
 
       - name: Upload test reports
         if: always()
