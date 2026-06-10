@@ -39,6 +39,7 @@ public class EditContactTests extends BaseTests{
     }
     @Test
     public void onCorrectContact() {
+        contactListPage.clickNameCellValue(nameToEdit);
         Assert.assertEquals(contactDetailsPage.getHeaderText(), CONTACT_DETAILS_HEADER);
         Assert.assertEquals(contactDetailsPage.getFirstNameValue(), nameToEdit);
     }
@@ -126,7 +127,6 @@ public class EditContactTests extends BaseTests{
 
         editUserFile = new NewEditContact("editNewContact");
         editContactPage.editContactNewData(editUserFile);
-        editContactPage.clickSubmitButton();
 
         if (driver.getCurrentUrl().contains("/editContact")) {
             String body = driver.findElement(By.tagName("body")).getText();

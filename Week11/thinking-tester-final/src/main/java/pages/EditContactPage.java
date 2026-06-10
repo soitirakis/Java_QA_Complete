@@ -32,16 +32,26 @@ public class EditContactPage extends BasePage {
     private By countryInput = By.id("country");
     private By submitButton = By.id("submit");
 
-    private By input = By.xpath("//p/input");
+    private By input = By.xpath("//input[@id]");
 
     //actions
     public List<String> getInputValues() {
         WaitUtils.textToBePresentInElementLocated(header, "Edit Contact");
-        WaitUtils.visibilityOfElementLocated(header);
+        // React populates form fields asynchronously after the header renders;
+        // wait until firstName has a non-empty value before reading all inputs.
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+            .until(d -> {
+                try {
+                    String val = d.findElement(firstNameInput).getAttribute("value");
+                    return val != null && !val.isEmpty();
+                } catch (Exception e) {
+                    return false;
+                }
+            });
         List<WebElement> inputs = driver.findElements(input);
         List<String> inputValues = new ArrayList<>();
-        for (WebElement input : inputs) {
-            inputValues.add(input.getAttribute("value"));
+        for (WebElement el : inputs) {
+            inputValues.add(el.getAttribute("value"));
         }
         return inputValues;
     }
