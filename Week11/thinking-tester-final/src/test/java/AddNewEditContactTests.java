@@ -11,7 +11,8 @@ import static testdata.pages.AddNewContactTestData.MISSING_MANDATORY_FIELDS;
 import static testdata.pages.ContactListTestData.CONTACT_LIST_HEADER;
 import static testdata.pages.LoginTestData.HEADER_TITLE;
 
-public class AddNewEditContactTests extends BaseTests {
+public class
+AddNewEditContactTests extends BaseTests {
     static AddNewContactPage addNewContactPage;
 
     NewEditContact newEditContactFile;
