@@ -1,18 +1,39 @@
-# Thinking tester SeleniumTests
+# Week 08 — Thinking Tester Contact List (Selenium + TestNG)
 
-- Having the following URL: [Thinking tester.com](https://thinking-tester-contact-list.herokuapp.com/)
+Automating the Thinking Tester Contact List application — sign-up, login, and adding a contact using randomly generated test data.
 
-## Exercice
-1. <code>Create an user to signUp</code> 
-2. <code>Login</code>
-3. <code>Add contact</code> using random generators
-4. <code>Assert</code> newContact added.
+## Topics Covered
 
+- Selenium WebDriver with TestNG
+- Page Object Model with `PageFactory` and `@FindBy`
+- Randomised test data generation (email, name, phone, birthdate, location)
+- Sequential test flow: sign up → login → add contact
+- TestNG `Assert` for result validation
 
-## Exercice
-1. Rewrite the challenges using the <code>POM</code> structure.
+## Contents
 
-## Tools
-1. Java
-2. Intelij
-3. Selenium 
+| File / Folder | Description |
+| ------------- | ----------- |
+| `selenium-tests/` | Maven project containing all pages, tests, and utilities |
+| `selenium-tests/src/main/java/scoalaInformala/LandingPage.java` | Page object for the login / sign-up landing page |
+| `selenium-tests/src/main/java/scoalaInformala/AddContactPage.java` | Page object for the Add Contact form |
+| `selenium-tests/src/main/java/scoalaInformala/ContactListPage.java` | Page object for the contact list view |
+| `selenium-tests/src/test/java/SeleniumTests.java` | TestNG tests: `createUser`, `login`, `addContact` |
+| `selenium-tests/src/test/java/utils/Utils.java` | Random generators for email, name, phone, birthdate, city, and country |
+
+## Test Scenarios
+
+- **Sign up** — register a new user account on the application
+- **Login** — authenticate with valid credentials
+- **Add contact** — log in and create a contact with randomly generated personal details; assert the contact appears in the list
+
+## How to Run
+
+```bash
+cd selenium-tests
+mvn test
+```
+
+---
+
+[← Week07](../Week07) | [Back to root](../README.md) | [Week09 →](../Week09)
