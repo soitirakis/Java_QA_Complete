@@ -1,4 +1,4 @@
-# QA Complete - JAVA Methods
+# Week 02 — Java Methods
 
 ## Exercises for week2 
 
@@ -17,7 +17,7 @@
    *     *
    *******
 ```
-3. Create a method drawShapeCornes().
+3. Create a method drawShapeCorners().
    Expected output:
 ```
    *     *
@@ -27,4 +27,4 @@
 4. Display the number of days in month February from a year between 1900-2016. 
 
 ## Solution
-[Homework 2](https://github.com/soitirakis/Java_QA_Complete/blob/main/Week2/src/Tema2.java)
+[Homework 2](https://github.com/soitirakis/Java_QA_Complete/blob/main/Week02/src/Tema2.java)

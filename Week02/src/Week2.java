@@ -1,5 +1,5 @@
 public class Week2 {
-    public static void main(){
+    public static void main(String[] args){
         //TODO1
         //Calculate the sum of the first 1000 numbers higher than 0
 
