@@ -7,15 +7,19 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Reader {
     public static JSONObject json(String name) {
-        String jsonPath=System.getProperty("user.dir")+"\\src\\main\\java\\testdata\\files\\"+name+".json";
+        //String jsonPath=System.getProperty("user.dir")+"\\src\\main\\java\\testdata\\files\\"+name+".json";
+        Path jsonPath = Paths.get(System.getProperty("user.dir"),
+                "src", "main", "java", "testdata", "files", name + ".json");
 
         //read the json file from the specified location
         FileReader reader = null;
         try {
-            reader = new FileReader(jsonPath);
+            reader = new FileReader(jsonPath.toFile());
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
