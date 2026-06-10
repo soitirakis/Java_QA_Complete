@@ -1,15 +1,15 @@
-# QA Complete - JAVA Introduction 
+# Week 01 — Java Introduction
 
-Week1 is an introduction to Java language. In this week you practice the basics. Syntax, Classes, Constructos,
+Week1 is an introduction to Java language. In this week you practice the basics. Syntax, Classes, Constructors,
 Access control 
 
-## Exercices 
+## Exercises 
 
 1. Create a new project where to include variables of type string with the following names:
  - --termen1
  - --termen2
  - --termen3
-   The value of each variable fill free to assing anything.
+   The value of each variable feel free to assign anything.
    Concatenate the three variables and print the outcome.
 
 2. Comment the code from exercise one.
@@ -17,11 +17,5 @@ Access control
 3. Inside the same project, create:
    - one constant
    - two variables and assign to them at least 10 characters
-   - execute all the arithmetical calculations (sum, substr, multipication, division)
+   - execute all the arithmetical calculations (sum, subtraction, multiplication, division)
    - print all the results 
-
-asdasd
-
-asdasd
-
-asdasd
